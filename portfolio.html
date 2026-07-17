@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noriko Miyoshi | Web Developer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
+  :root{
+    --bg:#F1F0EA;
+    --bg-alt:#EDECE5;
+    --ink:#3B3A35;
+    --ink-soft:#6E6C64;
+    --line:#DAD8CF;
+    --dark:#3F3D37;
+    --dark-2:#2E2D28;
+    --paper:#FBFAF6;
+    --chip:#E4E2D8;
+    --accent:#9C7A3F;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:0.02em;
+  }
+  .worksans {
+    font-family: "Work Sans", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+  /* ---------- Header ---------- */
+  header{
+    border-bottom:1px solid var(--line);
+    background:var(--bg);
+    position:sticky; top:0; z-index:50;
+  }
+  .header-inner{
+    max-width:1180px;
+    margin:0 auto;
+    padding:18px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    width:38px; height:38px; border-radius:50%;
+    background:var(--dark);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:15px;
+  }
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:48px;
+  }
+  nav a{
+    font-size:13px;
+    letter-spacing:0.08em;
+    color:var(--ink);
+    transition:opacity .2s;
+  }
+  nav a:hover{opacity:.55;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 0 0;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero-bg-text{
+    position:absolute;
+    top:-0.12em; left:0;
+    width:100%;
+    text-align:center;
+    font-weight:800;
+    font-size:clamp(60px,13.2vw,260px);
+    line-height:1;
+    color:transparent;
+    -webkit-text-stroke:1px var(--line);
+    white-space:nowrap;
+    z-index:0;
+    pointer-events:none;
+    user-select:none;
+  }
+  .hero-grid{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:36px;
+    align-items:center;
+    padding-bottom:56px;
+  }
+  .hero-eyebrow{
+    font-size:12px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    margin-bottom:22px;
+    overflow-wrap:break-word;
+    white-space:normal;
+  }
+  h1.name{
+    font-weight:600;
+    font-size:clamp(48px,6vw,77px);
+    line-height:1;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+    margin-bottom:32px;
+  }
+  .bio{
+    max-width:560px;
+    font-size:15.5px;
+    line-height:1.9;
+    color:var(--ink);
+  }
+  .bio .en{
+    color:var(--ink-soft);
+    margin-top:14px;
+    font-size:13.5px;
+  }
+  .hero-stats{
+    display:inline-flex;
+    gap:0;
+    margin-top:40px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+  }
+  .hero-stats > div{
+    padding-right:28px;
+  }
+  .hero-stats > div + div{
+    border-left:1px solid var(--line);
+    padding-left:28px;
+  }
+  .hero-stats .num{
+    display:block;
+    font-size:19px;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:4px;
+  }
+  .hero-stats .label{
+    display:block;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+  .hero-cta{
+    display:flex;
+    gap:14px;
+    margin-top:36px;
+  }
+  .hero-cta .btn.outline{
+    background:transparent;
+    border:1px solid var(--ink);
+    color:var(--ink);
+  }
+  .hero-cta .btn.outline:hover{
+    background:var(--ink);
+    color:#fff;
+  }
+
+  /* hero visual stack */
+  .hero-right{
+    position:relative;
+    height:420px;
+  }
+  .hero-stack{
+    position:relative;
+    width:100%;
+    height:100%;
+  }
+  .stack-card{
+    position:absolute;
+    width:72%;
+    border-radius:12px;
+    overflow:hidden;
+    background:var(--paper);
+    border:0px solid var(--line);
+    box-shadow:0 24px 44px -26px rgba(0,0,0,0.32);
+    transition:transform .35s ease;
+  }
+  .stack-card:hover{transform:translateY(-6px) rotate(0deg) !important;}
+  .stack-card .browserbar{height:26px;}
+  .stack-card .dot{width:6px; height:6px;}
+  .stack-card .urlpill{height:16px; font-size:9.5px;}
+  .stack-card .stack-body{
+    aspect-ratio:16/10.5;
+    background:repeating-linear-gradient(135deg, #E9E7DE 0 2px, #F1F0EA 2px 14px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .stack-card .stack-body span{
+    font-size:11px;
+    color:var(--ink-soft);
+  }
+  .card-a{ top:0; left:2%; z-index:3; transform:rotate(-5deg); }
+  .card-b{ top:76px; right:0; width:66%; z-index:2; transform:rotate(4deg); opacity:.96; }
+  .card-c{ bottom:0; left:16%; width:60%; z-index:1; transform:rotate(-2deg); opacity:.9; }
+
+  .chip{
+    position:absolute;
+    background:var(--paper);
+    border:1px solid var(--line);
+    color:var(--ink);
+    font-size:11px;
+    padding:8px 14px;
+    border-radius:999px;
+    box-shadow:0 10px 20px -14px rgba(0,0,0,0.3);
+  }
+  .chip-1{ top:8px; right:6%; transform:rotate(4deg); z-index:4; }
+  .chip-2{ bottom:34px; left:-6px; transform:rotate(-3deg); z-index:4; }
+  .chip-3{ bottom:-10px; right:14%; transform:rotate(3deg); z-index:4; }
+
+  .scroll-cue{
+    position:relative;
+    z-index:1;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 0 28px;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+  .scroll-cue .line{
+    width:1px; height:26px;
+    background:var(--ink-soft);
+    animation:scrolldown 1.8s infinite;
+  }
+  @keyframes scrolldown{
+    0%{transform:scaleY(0); transform-origin:top;}
+    50%{transform:scaleY(1); transform-origin:top;}
+    50.001%{transform-origin:bottom;}
+    100%{transform:scaleY(0); transform-origin:bottom;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .scroll-cue .line{animation:none;}
+  }
+
+  /* ---------- Section label ---------- */
+  .section-head{
+    padding:64px 0 40px;
+  }
+  .section-head .tag{
+    font-size:12px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    margin-bottom:14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .section-head .tag::before{
+    content:'';
+    width:26px; height:1px;
+    background:var(--ink-soft);
+    display:inline-block;
+  }
+  .section-head h2{
+    font-weight:600;
+    font-size:clamp(34px,5vw,52px);
+  }
+  .section-head p.lead{
+    max-width:560px;
+    margin-top:16px;
+    font-size:14.5px;
+    line-height:1.85;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- Strengths ---------- */
+  #profile{
+    border-bottom:1px solid var(--line);
+    padding-bottom:80px;
+  }
+  .strengths{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .strength-card{
+    background:var(--paper);
+    padding:38px 32px 40px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .strength-num{
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+  .strength-card h3{
+    font-size:19px;
+    font-weight:700;
+    line-height:1.5;
+  }
+  .strength-card .sub{
+    font-size:11.5px;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+  }
+  .strength-card p{
+    font-size:13.3px;
+    line-height:1.85;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- Works ---------- */
+  #works{padding-top:20px;}
+  .project{
+    display:grid;
+    grid-template-columns:0.92fr 1.08fr;
+    gap:64px;
+    align-items:center;
+    padding:72px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .project-title{
+    font-weight:600;
+    font-size:clamp(34px,4.6vw,50px);
+    line-height:1.05;
+    margin-bottom:14px;
+  }
+  .project-jp{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:26px;
+  }
+  .meta{
+    display:grid;
+    grid-template-columns:88px 1fr;
+    row-gap:8px;
+    font-size:12.5px;
+    margin-bottom:30px;
+    max-width:420px;
+  }
+  .meta .k{color:var(--ink-soft);}
+  .meta .v{color:var(--ink);}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--dark);
+    color:#fff;
+    font-size:12.5px;
+    padding:12px 22px;
+    border-radius:999px;
+    transition:background .2s, transform .2s;
+  }
+  .btn:hover{background:var(--dark-2); transform:translateY(-1px);}
+  .btn.disabled{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    cursor:default;
+  }
+  .btn.disabled:hover{transform:none;}
+
+  .shotframe{
+    border-radius:14px;
+    overflow:hidden;
+    background:var(--paper);
+    border:1px solid var(--line);
+    box-shadow:0 20px 40px -28px rgba(0,0,0,0.35);
+  }
+  .browserbar{
+    height:34px;
+    background:#E7E5DC;
+    display:flex;
+    align-items:center;
+    padding:0 12px;
+    gap:6px;
+  }
+  .dot{width:7px; height:7px; border-radius:50%; background:#CFCDC2;}
+  .urlpill{
+    flex:1;
+    margin-left:8px;
+    background:#F4F3ED;
+    border-radius:6px;
+    height:20px;
+    display:flex;
+    align-items:center;
+    padding:0 10px;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+  }
+  .shot{
+    position:relative;
+    aspect-ratio:16/10.2;
+    overflow:hidden;
+    background:
+      repeating-linear-gradient(135deg, #E9E7DE 0 2px, #F1F0EA 2px 14px);
+  }
+  .shot img{
+    width:100%; height:100%; object-fit:cover; object-position:top;
+  }
+  .shot .ph-label{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    gap:6px;
+    text-align:center;
+    padding:20px;
+  }
+  .shot .ph-label .t1{
+    font-size:12px; color:var(--ink-soft);
+    letter-spacing:0.03em;
+  }
+  .shot .ph-label .t2{
+    font-size:10.5px; color:var(--ink-soft); opacity:.7;
+  }
+  .shot .badge{
+    position:absolute;
+    right:12px; bottom:12px;
+    background:var(--dark);
+    color:#fff;
+    font-size:10px;
+    padding:5px 10px;
+    border-radius:999px;
+    letter-spacing:0.04em;
+  }
+  .shot.has-img .ph-label{display:none;}
+
+  .project.reverse .textcol{order:2;}
+  .project.reverse .shotcol{order:1;}
+
+  /* ---------- Contact ---------- */
+  #contact{
+    background:var(--dark-2);
+    color:#F4F2EA;
+    padding:90px 0 76px;
+  }
+  #contact .kicker{
+    font-size:12px;
+    color:#B9B6A9;
+    text-transform:uppercase;
+    margin-bottom:22px;
+  }
+  .contact-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:32px;
+  }
+  #contact h2{
+    font-weight:800;
+    font-size:clamp(56px,10vw,120px);
+    line-height:1;
+    color:#F4F2EA;
+  }
+  .contact-info{
+    font-size:13.5px;
+    line-height:1.95;
+    color:#CFCCBE;
+    text-align:right;
+  }
+  .contact-info a{
+    color:#F4F2EA;
+    border-bottom:1px solid rgba(244,242,234,0.35);
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:40px 0;
+    border-top:1px solid var(--line);
+  }
+  .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:24px;
+    font-size:12.5px;
+  }
+  .foot-cols{
+    display:flex;
+    gap:80px;
+  }
+  .foot-cols div a{
+    display:block;
+    color:var(--ink-soft);
+    padding:3px 0;
+  }
+  .foot-cols div a:hover{color:var(--ink);}
+  .copyright{color:var(--ink-soft);}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    .wrap, .header-inner{padding-left:22px; padding-right:22px;}
+    nav ul{gap:22px;}
+    .hero{padding:64px 0 0 0;}
+    .hero-grid{grid-template-columns:1fr; gap:56px;}
+    .hero-right{height:300px; margin-top:8px;}
+    .hero-stats{gap:0;}
+    .hero-cta{flex-wrap:wrap;}
+    .project{
+      grid-template-columns:1fr;
+      gap:28px;
+      padding:48px 0;
+    }
+    .project.reverse .textcol{order:1;}
+    .project.reverse .shotcol{order:2;}
+    .strengths{grid-template-columns:1fr;}
+    .contact-row{flex-direction:column; align-items:flex-start;}
+    .contact-info{text-align:left;}
+    .foot-inner{flex-direction:column;}
+    .foot-cols{gap:48px;}
+    .bio .en {
+      display: none;
+    }
+    .bio p {
+      font-size: 13px;
+    }
+    .hero-bg-text {
+      font-size: clamp(3vw, 13.2vw, 260px);
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">N</div>
+    <nav>
+      <ul>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg-text mono">DESIGN × ADS</div>
+  <div class="hero-grid wrap">
+    <div class="hero-left">
+      <div class="hero-eyebrow mono">Web Designer / Developer</div>
+      <h1 class="name worksans">Noriko Miyoshi</h1>
+      <div class="bio">
+        <p>広告運用も一貫して手がけられる強みを活かし、市場やターゲットの動きを見据えた「成果に繋がるデザイン」を提供しています。<br>
+          デザインの力で「伝わりにくい価値」を整理し、正しく届く形に整えることを大切にしています。</p>
+        <p class="en">With a strong background in ad operations, I specialize in creating results-driven designs tailored to market trends and target audiences. <br>
+          My work focuses on shaping and visualizing subtle values, ensuring they resonate clearly and meaningfully with their audience.</p>
+      </div>
+      <div class="hero-stats mono">
+        <div>
+          <span class="num">7+</span>
+          <span class="label">Projects</span>
+        </div>
+        <div>
+          <span class="num">Design + Ads</span>
+          <span class="label">Skill Set</span>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a href="#works" class="btn mono">View Works<span>→</span></a>
+        <a href="#contact" class="btn outline mono">Contact</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-stack">
+        <div class="stack-card card-a">
+          <div class="browserbar">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            <div class="urlpill mono">narai.jp</div>
+          </div>
+          <div class="stack-body mono"><img style="width: 100%; height: 100%;" src="screenshots/narai.png"></div>
+        </div>
+        <div class="stack-card card-b">
+          <div class="browserbar">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            <div class="urlpill mono">jp.sake100.com</div>
+          </div>
+          <div class="stack-body mono"><img style="width: 100%; height: 100%;" src="screenshots/sake100.png"></div>
+        </div>
+        <div class="stack-card card-c">
+          <div class="browserbar">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            <div class="urlpill mono">rococotokyo.com</div>
+          </div>
+          <div class="stack-body mono"><img style="width: 100%; height: 100%;" src="screenshots/rococotokyo.png"></div>
+        </div>
+      </div>
+      <div class="chip chip-1 mono">Web Design</div>
+      <div class="chip chip-2 mono">Ad Operation</div>
+      <div class="chip chip-3 mono">Shopify</div>
+    </div>
+  </div>
+
+  <div class="scroll-cue wrap">
+    <div class="line"></div>
+    Scroll
+  </div>
+</section>
+
+<section id="profile" class="wrap">
+  <div class="section-head">
+    <div class="tag mono">Profile / Strengths</div>
+    <h2>できること、得意なこと。</h2>
+    <p class="lead">デザインから実装、LP運用まで一気通貫で対応します。3つの強みを軸に、案件ごとに最適な体制を組みます。</p>
+  </div>
+
+  <div class="strengths">
+    <div class="strength-card">
+      <div class="strength-num mono">01</div>
+      <div class="sub mono">Design × Marketing</div>
+      <h3>マーケティング×デザイン・LP制作のワンストップ体制</h3>
+      <p>Figmaでのデザイン提案から、HTML/CSS/JS、WordPress、Liquidを用いた実装、ランディングページ（LP）の制作・更新まで対応。ユーザー理解とデータ（ヒートマップやGA4）に基づくLPO・EFOを推進し、CPA・CVを改善します。</p>
+    </div>
+    <div class="strength-card">
+      <div class="strength-num mono">02</div>
+      <div class="sub mono">Shopify × CRM</div>
+      <h3>Shopify・ECサイト構築 × CRMによるLTV最大化</h3>
+      <p>Shopifyを含むECストア構築・カスタマイズに加え、HubSpotやKlaviyo等のCRM・メルマガツールを連携した、リピート率向上を見据えたマーケティング基盤の構築を得意としています。</p>
+    </div>
+    <div class="strength-card">
+      <div class="strength-num mono">03</div>
+      <div class="sub mono">Global / Bilingual</div>
+      <h3>英語力を活かした多言語サイト・海外向けLP・越境EC制作支援</h3>
+      <p>米国大学卒で英語での直接的なテキスト作成やコミュニケーションが可能です。欧米やアジア圏をターゲットとした多言語Webサイトの構築や、海外ユーザー向けLPの制作、Shopifyでの越境EC（多言語・多通貨設定等）の実装を得意としています。</p>
+    </div>
+  </div>
+</section>
+
+<section id="works" class="wrap">
+  <div class="section-head">
+    <div class="tag mono">Selected Works</div>
+    <h2 class="worksans">Works</h2>
+    <p class="lead">日本酒・ビール・不動産・資産運用など、業界の異なる7つのプロジェクト。デザインから実装まで担当した実績です。</p>
+  </div>
+
+  <div id="works-list"></div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="kicker mono">Get in touch</div>
+    <div class="contact-row">
+      <h2>Contact</h2>
+      <div class="contact-info">
+        <p>現在、新規案件のご相談も随時受け付けています。<br>お気軽にご相談ください。</p>
+        <p><a href="mailto:norikomiyoshi.w@gmail.com">norikomiyoshi.w@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <div style="font-weight:700; margin-bottom:6px;">Noriko Miyoshi</div>
+      <div class="copyright mono">©2026</div>
+    </div>
+    <div class="foot-cols mono">
+      <div>
+        <a href="#works">Works</a>
+        <a href="#profile">Profile</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <!--<div>
+        <a href="#">X</a>
+        <a href="#">note</a>
+        <a href="#">Pinterest</a>
+      </div>-->
+    </div>
+  </div>
+</footer>
+
+<script>
+const projects = [
+  {
+    name: "SAKE HUNDRED",
+    jp: "サケハンドレッド（サイトリニューアル）",
+    industry: "日本酒販売",
+    type: "サイトリニューアル",
+    role: "デザイン一部（UI/UX改善）、実装、広告用LP制作",
+    tools: "HTML / CSS / JavaScript / Liquid / Shopify",
+    url: "https://jp.sake100.com/",
+    shot: "screenshots/sake100.png"
+  },
+  {
+    name: "ROCOCO Tokyo",
+    jp: "ロココトウキョウ（サイトリニューアル）",
+    industry: "高級ビール販売",
+    type: "サイトリニューアル",
+    role: "デザイン、実装",
+    tools: "HTML / CSS / JavaScript",
+    url: "https://rococotokyo.com/",
+    shot: "screenshots/rococotokyo.png"
+  },
+  {
+    name: "narai",
+    jp: "ナライ（サイトリニューアル）",
+    industry: "日本酒販売",
+    type: "サイトリニューアル",
+    role: "デザイン、実装",
+    tools: "HTML / CSS / JavaScript / Liquid / Shopify",
+    url: "https://www.narai.jp/",
+    shot: "screenshots/narai.png"
+  },
+  {
+    name: "POTUS",
+    jp: "ポルトゥス（コーポレートサイト制作）",
+    industry: "マーケティング支援",
+    type: "コーポレートサイト制作",
+    role: "デザイン、実装",
+    tools: "HTML / CSS / JavaScript",
+    url: "https://portus.co.jp/",
+    shot: "screenshots/portus.png"
+  },
+  {
+    name: "ファミリーオフィス\n.com",
+    jp: "資産運用メディア（メディアサイト制作）",
+    industry: "資産運用",
+    type: "メディアサイト制作",
+    role: "デザイン、実装",
+    tools: "HTML / CSS / JavaScript / WordPress",
+    url: "https://fa3ily-office.com/fopost/",
+    shot: "screenshots/familyoffice.png"
+  },
+  {
+    name: "KBカンパニー",
+    jp: "ケービーカンパニー（メディアサイト制作）",
+    industry: "Webコンサルティング",
+    type: "メディアサイト制作",
+    role: "デザイン、実装",
+    tools: "HTML / CSS / JavaScript / WordPress",
+    url: "https://kbcompany.jp/blog",
+    shot: "screenshots/kbcompany.png"
+  },
+  {
+    name: "レイシャス21",
+    jp: "レイシャスにじゅういち（広告LP制作）",
+    industry: "不動産",
+    type: "広告LP制作",
+    role: "デザイン、実装",
+    tools: "HTML / CSS / JavaScript",
+    url: null,
+    shot: "screenshots/racious21.png"
+  }
+];
+
+const list = document.getElementById('works-list');
+
+projects.forEach((p, i) => {
+  const row = document.createElement('div');
+  row.className = 'project' + (i % 2 === 1 ? ' reverse' : '');
+
+  const domain = p.url ? p.url.replace(/^https?:\/\//,'').replace(/\/$/,'') : 'PDF資料（非公開）';
+
+  const btnHtml = p.url
+    ? `<a class="btn mono" href="${p.url}" target="_blank" rel="noopener">View Site<span>↗</span></a>`
+    : `<span class="btn mono disabled">PDF資料</span>`;
+
+  row.innerHTML = `
+    <div class="textcol">
+      <div class="project-title worksans">${p.name.replace(/\n/g,'<br>')}</div>
+      <div class="project-jp mono">${p.jp}</div>
+      <div class="meta mono">
+        <div class="k">Industry</div><div class="v">${p.industry}</div>
+        <div class="k">Type</div><div class="v">${p.type}</div>
+        <div class="k">Role</div><div class="v">${p.role}</div>
+        <div class="k">Tools</div><div class="v">${p.tools}</div>
+      </div>
+      ${btnHtml}
+    </div>
+    <div class="shotcol">
+      <div class="shotframe">
+        <div class="browserbar">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          <div class="urlpill mono">${domain}</div>
+        </div>
+        <div class="shot" id="shot-${i}">
+          <img src="${p.shot}" alt="${p.name} top page screenshot"
+               onload="this.parentElement.classList.add('has-img')"
+               onerror="this.style.display='none'">
+          <div class="ph-label">
+            <div class="t1 mono">Top Page Screenshot</div>
+            <div class="t2 mono">${p.shot} を差し替えてください</div>
+          </div>
+          <!--<div class="badge mono">Sample</div>-->
+        </div>
+      </div>
+    </div>
+  `;
+  list.appendChild(row);
+});
+</script>
+
+</body>
+</html>
